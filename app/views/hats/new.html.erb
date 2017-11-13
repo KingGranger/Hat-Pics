@@ -17,31 +17,12 @@
 
   <div class="row">
     <div class="col-1">
-  <%= f.label :brand %>
+  <%= f.label :description %>
     </div>
     <div class="col-1">
-  <%= f.text_field :brand%> <br>
+  <%= f.text_field :description %> <br>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-1">
-  <%= f.label :category %>
-    </div>
-    <div class="col-1">
-  <%= f.text_field :category%> <br>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-1">
-  <%= f.label :color %>
-    </div>
-    <div class="col-1">
-  <%= f.text_field :color%> <br>
-    </div>
-  </div>
-
 
   <%= f.hidden_field :user_id, value: session[:id] %>
 

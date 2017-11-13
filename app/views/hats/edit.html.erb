@@ -1,22 +1,33 @@
+
+
 <div class = "container">
+  
   <div class = "jumbotron">
   <h1> Edit Your Hat </h1>
 <%= form_for @hat do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="row">
+  <div class="col-md-1">
+<%= f.label :name %>
+  </div>
+  <div class="col-md-1">
+<%= f.text_field :name %> <br>
+  </div>
+</div>
 
-  <%= f.label :brand %>
-  <%= f.text_field :brand %>
+<div class="row">
+  <div class="col-md-1">
+<%= f.label :description %>
+  </div>
+  <div class="col-md-1">
+<%= f.text_field :description%> <br>
+  </div>
+</div>
+<br>
+  <%= f.hidden_field :user_id, value: session[:id] %>
 
-  <%= f.label :category %>
-  <%= f.text_field :category %>
-
-  <%= f.label :color %>
-  <%= f.text_field :color %>
-
-  <%= f.hidden_field :user_id, value: 1 %>
 
   <%= f.submit %>
+
 
 <% end %>
   </div>

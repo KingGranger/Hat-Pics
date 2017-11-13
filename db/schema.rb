@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(version: 20171114182805) do
   end
 
   create_table "hats", force: :cascade do |t|
-    t.string "brand"
-    t.string "category"
-    t.string "color"
-    t.integer "user_id"
     t.string "name"
+    t.text "description"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
