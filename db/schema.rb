@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113151522) do
+ActiveRecord::Schema.define(version: 20171113174209) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "hat_pic_id"
+    t.integer "commenter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hat_pics", force: :cascade do |t|
     t.string "picture"
@@ -20,7 +28,6 @@ ActiveRecord::Schema.define(version: 20171113151522) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["uploader_id"], name: "index_hat_pics_on_uploader_id"
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -29,8 +36,6 @@ ActiveRecord::Schema.define(version: 20171113151522) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hat_pic_id"], name: "index_ratings_on_hat_pic_id"
-    t.index ["rater_id"], name: "index_ratings_on_rater_id"
   end
 
   create_table "users", force: :cascade do |t|
