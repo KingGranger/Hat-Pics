@@ -10,29 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113174209) do
+ActiveRecord::Schema.define(version: 20171113203520) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "hat_pic_id"
-    t.integer "commenter_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "hat_pics", force: :cascade do |t|
     t.string "picture"
-    t.integer "uploader_id"
+    t.integer "hat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hats", force: :cascade do |t|
     t.string "brand"
-    t.string "type"
+    t.string "category"
     t.string "color"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ratings", force: :cascade do |t|
     t.integer "hat_pic_id"
-    t.integer "rater_id"
+    t.integer "user_id"
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
