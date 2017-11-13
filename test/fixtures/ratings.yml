@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hat_pic: one
+  rater: one
+  score: 1
+
+two:
+  hat_pic: two
+  rater: two
+  score: 1

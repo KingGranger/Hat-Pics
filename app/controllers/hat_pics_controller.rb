@@ -1,0 +1,2 @@
+class HatPicsController < ApplicationController
+end

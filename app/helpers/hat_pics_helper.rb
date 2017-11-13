@@ -1,0 +1,2 @@
+module HatPicsHelper
+end
