@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# lina = User.create(username: 'lina')
-# james = User.create(username: 'james')
-# brandon = User.create(username: 'brandon')
+lina = User.create(username: 'lina')
+james = User.create(username: 'james')
+brandon = User.create(username: 'brandon')
 hat1 = HatPic.create(uploader: lina, color: 'red')
 hat2 = HatPic.create(uploader: james, color: 'orange')
 Rating.create(rater:lina, hat_pic: hat1, score: 5)

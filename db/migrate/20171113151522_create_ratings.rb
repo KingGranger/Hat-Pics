@@ -1,8 +1,8 @@
 class CreateRatings < ActiveRecord::Migration[5.1]
   def change
     create_table :ratings do |t|
-      t.belongs_to :hat_pic, foreign_key: true
-      t.belongs_to :rater, foreign_key: true
+      t.integer :hat_pic_id
+      t.integer :rater_id
       t.integer :score
 
       t.timestamps
