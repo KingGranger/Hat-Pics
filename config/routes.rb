@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
   resources :hats
   resources :comments, only: [:create, :new, :delete]
   resources :ratings, only: [:create, :new, :delete]
