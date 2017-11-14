@@ -1,0 +1,7 @@
+<%= @hat.brand %><br></br>
+<%= @hat.category %><br></br>
+<%= @hat.color %><br></br>
+
+<% @hat.hat_pics.each do |p| %>
+  <%= link_to(image_tag(p.avatar.url(:thumb)), hat_pic_path(p)) %>
+<% end %>

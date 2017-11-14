@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :delete]
+
   def show
   end
 
@@ -31,6 +32,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :avatar)
+    params.require(:user).permit(:username, :email)
   end
 end

@@ -6,7 +6,7 @@ class HatPicsController < ApplicationController
   def create
     @hat_pic = HatPic.new(hat_pic_params)
     if @hat_pic.save
-      redirect_to hat_path(@hat_pic)
+      redirect_to hat_pic_path(@hat_pic)
     else
       render :new
     end
@@ -29,7 +29,7 @@ class HatPicsController < ApplicationController
   private
 
   def hat_pic_params
-    params.require(:hat_pic).permit(:avatar)
+    params.require(:hat_pic).permit(:hat_id, :avatar)
   end
 
 end

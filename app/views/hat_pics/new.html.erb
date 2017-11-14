@@ -1,11 +1,16 @@
 <br><h1> 💂‍ Create Your Hat! 🎩 </h1> <br>
 
-<div class = "container-fluid">
-  <div class= "jumbotron"
-<%= form_for @hat_pic, url: hat_pics_path, html: { multipart: true } do |form| %>
-  <h2><%= form.label "Upload:" %> <br> </h2>
-  <%= form.file_field :avatar %> <br> <br>
-  <%= form.submit "Create Hat Pic" %>
+<%#<div class= "container-fluid">%>
+  <%#<div class= "jumbotron"%>
+<%= form_for @hat_pic do |f| %>
+
+
+  <%= f.file_field :avatar %>  <br> <br>
+
+  <%= f.collection_select :hat_id, Hat.all, :id, :color %>
+
+  <%= f.submit "Create Hat Pic" %>
+
 <% end %>
-  </div>
-</div>
+  <%#</div>%>
+<%#</div>%>

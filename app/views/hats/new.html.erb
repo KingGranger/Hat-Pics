@@ -1,0 +1,15 @@
+<%= form_for @hat do |f| %>
+  <%= f.label :brand %>
+  <%= f.text_field :brand %>
+
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+
+  <%= f.label :color %>
+  <%= f.text_field :color %>
+
+  <%= f.hidden_field :user_id, value: 1 %>
+  
+  <%= f.submit %>
+
+<% end %>
