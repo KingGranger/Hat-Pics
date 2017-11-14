@@ -1,0 +1,4 @@
+<h1><%= @user.username %></h1>
+  <% @user.hats.each do |hat| %>
+    <%= link_to(image_tag(hat.hat_pics.all.sample.avatar.url(:thumb)), hat_path(hat)) %>
+  <% end %>

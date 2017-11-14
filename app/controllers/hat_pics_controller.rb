@@ -5,11 +5,15 @@ class HatPicsController < ApplicationController
   end
 
   def create
-    @hat_pic = HatPic.new(hat_pic_params)
-    if @hat_pic.save
-      redirect_to hat_pic_path(@hat_pic)
-    else
-      render :new
+    if logged_in?
+      @hat_pic = HatPic.new(hat_pic_params)
+      if @hat_pic.save
+        redirect_to hat_pic_path(@hat_pic)
+      else
+        render :new
+      end
+    else 
+      redirect_to login_path
     end
   end
 
