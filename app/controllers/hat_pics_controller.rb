@@ -17,9 +17,13 @@ class HatPicsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
-  def delete
+  def destroy
+    @hat_pic = HatPic.find(params[:id])
+    @hat_pic.destroy
+    redirect_to hat_pics_path
   end
 
   def set_picture
