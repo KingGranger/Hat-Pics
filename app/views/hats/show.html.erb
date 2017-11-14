@@ -9,6 +9,8 @@
 <% end %>
 <br>
 <br>
-<%= link_to("Edit", edit_hat_path(@hat)) %><br><br>
+<% if logged_in? && @hat.user_id == session[:id] %>
+  <%= link_to("Edit", edit_hat_path(@hat)) %><br><br>
 
-<%= link_to "Delete", @hat, method: :delete %>
+  <%= link_to "Delete", @hat, method: :delete %>
+<% end %>

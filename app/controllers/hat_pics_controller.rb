@@ -1,6 +1,8 @@
 class HatPicsController < ApplicationController
   before_action :set_picture, only: [:show, :delete]
+  before_action :authorize_user, only: [:new, :destroy, :create, 
   def index
+    #authorize_user
     @hat_pics = HatPic.all
   end
 

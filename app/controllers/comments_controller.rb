@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authorize_user
 
   def create
     @comment = Comment.new(comment_params)
@@ -8,6 +9,12 @@ class CommentsController < ApplicationController
     else
       render :"hat_pics/show"
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to hat_pics_path
   end
 
   private

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :delete]
+  before_action :authorize_user, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -16,8 +17,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:id] = @user.id
       redirect_to user_path(@user)
     else
+      flash[:notice] = "Something was wrong, try again"
       render :new
     end
   end

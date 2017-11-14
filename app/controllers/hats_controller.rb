@@ -1,4 +1,5 @@
 class HatsController < ApplicationController
+  before_action :authorize_user, only: [:create, :edit, :update, :destroy]
 
   def index
     @hats = Hat.all
@@ -10,6 +11,7 @@ class HatsController < ApplicationController
   end
 
   def show
+    authorize_user
     @hat = Hat.find(params[:id])
   end
 

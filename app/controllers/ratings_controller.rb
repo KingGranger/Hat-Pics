@@ -1,13 +1,6 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :edit, :delete]
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-  end
+  before_action :authorize_user
 
   def delete
   end
@@ -17,9 +10,6 @@ class RatingsController < ApplicationController
     @rating.score = params[:score]
     @rating.save
     redirect_to hat_pic_path(params[:rating][:hat_pic_id])
-  end
-
-  def new
   end
 
   def set_rating

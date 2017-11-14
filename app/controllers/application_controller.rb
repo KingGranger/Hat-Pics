@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!session[:id]
   end
+
+  def authorize_user
+    redirect_to login_path(url: request.url) unless session.include? :id
+  end
 end
