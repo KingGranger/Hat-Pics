@@ -1,4 +1,10 @@
-<h1><%= @user.username %></h1>
+<div class = "container">
+<div class = "jumbotron">
+<h1>Hello, <%= @user.username %>!</h1><br><br>
+
+Here are the hat profiles you made:
   <% @user.hats.each do |hat| %>
     <%= link_to(image_tag(hat.hat_pics.all.sample.avatar.url(:thumb)), hat_path(hat)) %>
   <% end %>
+</div>
+</div>

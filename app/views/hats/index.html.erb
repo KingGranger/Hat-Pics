@@ -1,3 +1,7 @@
+<div class = "container">
+  <div class = "jumbotron">
 <%= @hats.each do |hat| %>
   <%= link_to hat.name, hat_path(hat) %> <br>
 <% end %>
+  </div>
+</div>
