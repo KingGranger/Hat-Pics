@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 lina = User.find_or_create_by(username: 'lina')
 james = User.find_or_create_by(username: 'james')
 brandon = User.find_or_create_by(username: 'brandon')

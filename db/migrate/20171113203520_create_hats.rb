@@ -5,7 +5,7 @@ class CreateHats < ActiveRecord::Migration[5.1]
       t.string :category
       t.string :color
       t.integer :user_id
-
+      t.string :name
       t.timestamps
     end
   end

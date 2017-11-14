@@ -1,7 +1,7 @@
 class HatPicsController < ApplicationController
   before_action :set_picture, only: [:show, :delete]
   def index
-    @hat_pic = HatPic.all
+    @hat_pics = HatPic.all
   end
 
   def create

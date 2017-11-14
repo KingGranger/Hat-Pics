@@ -1,5 +1,14 @@
 class HatsController < ApplicationController
 
+  def index
+    @hats = Hat.all
+    if params[:search]
+      @hats = Hat.search(params[:search]).order("created_at DESC")
+      else
+        @hats = Hat.all.order("created_at DESC")
+      end
+  end
+
   def show
     @hat = Hat.find(params[:id])
   end
@@ -31,18 +40,18 @@ class HatsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @hat = Hat.find(params[:id])
     @user = @hat.user
     @hat.destroy
     flash[:notice] = "That mohfuckas gon'"
-    redirect_to user_path(@user)
+    redirect_to hats_path
   end
 
   private
 
   def hat_params
-    params.require(:hat)
+    params.require(:hat).permit(:brand, :category, :color, :user_id, :name)
   end
 
 end

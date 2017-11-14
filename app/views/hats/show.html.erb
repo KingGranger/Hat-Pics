@@ -1,0 +1,14 @@
+<h3> Name: </h3> <%= @hat.name %><br></br>
+<h3>Brand: </h3> <%= @hat.brand %><br></br>
+<h3> Category: </h3> <%= @hat.category %><br></br>
+<h3> Color: </h3> <%= @hat.color %><br></br>
+
+<h3> Pictures: </h3> <% @hat.hat_pics.each do |p| %>
+  <%= link_to(image_tag(p.avatar.url(:thumb)), hat_pic_path(p)) %>
+
+<% end %>
+<br>
+<br>
+<%= link_to("Edit", edit_hat_path(@hat)) %><br><br>
+
+<%= link_to "Delete", @hat, method: :delete %>
