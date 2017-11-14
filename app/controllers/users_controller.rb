@@ -13,9 +13,16 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to hat_path(@user)
+    else
+      render :new
+    end
   end
 
   def new
+    @user = User.new
   end
 
   def set_user
@@ -24,6 +31,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email)
+    params.require(:user).permit(:username, :email, :avatar)
   end
 end

@@ -4,9 +4,16 @@ class HatPicsController < ApplicationController
   end
 
   def create
+    @hat_pic = HatPic.new(hat_pic_params)
+    if @hat_pic.save
+      redirect_to hat_path(@hat_pic)
+    else
+      render :new
+    end
   end
 
   def new
+    @hat_pic = HatPic.new
   end
 
   def show
@@ -16,13 +23,13 @@ class HatPicsController < ApplicationController
   end
 
   def set_picture
-    @picture = HatPic.find(params[:id])
+    @hat_pic = HatPic.find(params[:id])
   end
 
   private
 
-  def hat_params
-    params.require(:hat_pic).permit(:picture, :uploader, :brand, :type, :color)
+  def hat_pic_params
+    params.require(:hat_pic).permit(:avatar)
   end
 
 end
