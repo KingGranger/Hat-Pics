@@ -12,7 +12,7 @@ class HatPicsController < ApplicationController
       else
         render :new
       end
-    else 
+    else
       redirect_to login_path
     end
   end
