@@ -1,5 +1,5 @@
 <div class="jumbotron">
 <%= @hat_pics.each do |hat_pic| %>
-  <%= image_tag hat_pic.avatar.url(:medium) %>
+  <%= link_to(image_tag(hat_pic.avatar.url(:medium)), hat_pic_path(hat_pic)) %>
 <% end %>
 </div>

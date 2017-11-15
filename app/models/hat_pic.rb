@@ -5,6 +5,7 @@ class HatPic < ApplicationRecord
   has_many :comments
   # has_many :commenters, through: :comments, class_name: 'User'
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def scores
     self.ratings.collect {|rating| rating.score}
