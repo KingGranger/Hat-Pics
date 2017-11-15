@@ -28,20 +28,28 @@
         <li class="nav-item active">
           <a class="nav-link" href="/hat_pics">Home <span class="sr-only">(current)</span></a>
         </li>
+        <% if !!session[:id] %>
+          <li class="nav-item">
+            <a class="nav-link" href="/hat_pics/new">Add New Pic </a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/hats/new">Add New Hat</a>
+          </li>
 
+          <li class="nav-item">
+            <%= link_to "Logout", logout_path,  method: :post, class: "nav-link"  %>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/hat_pics/new">Add New Pic </a>
-        </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/new">Sign Up </a>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/hats/new">Add New Hat Profile </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/users/new">Sign Up </a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= login_path %>>Login</a>
+          </li>
+        <% end %>
 
 
         <% unless session[:id].nil? %>
@@ -52,7 +60,7 @@
 
         <li class="nav-item">
           <% if logged_in? %>
-            <%= link_to "Logout", logout_path,  method: :post, class: "nav-link"  %></div>
+            <%= link_to "Logout", logout_path,  method: :post, class: "nav-link"  %>
           <% else %>
             <a class="nav-link" href=<%= login_path %>>Login</a>
           <% end %>

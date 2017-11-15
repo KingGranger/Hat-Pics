@@ -24,9 +24,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:id] = nil
     redirect_to hat_pics_path
-
   end
-
-  private
 
 end
