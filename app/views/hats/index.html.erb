@@ -1,7 +1,11 @@
 <div class = "container">
   <div class = "jumbotron">
-<%= @hats.each do |hat| %>
-  <%= link_to hat.name, hat_path(hat) %> <br>
+<% if @hats.any? %>
+  <% @hats.each do |hat| %>
+    <%= link_to hat.name, hat_path(hat) %> <br>
+  <% end %>
+<% else %>
+  <h1>There aren't any hats yet!</h1>
 <% end %>
   </div>
 </div>

@@ -1,5 +1,10 @@
 <div class="jumbotron">
-<%= @hat_pics.each do |hat_pic| %>
-  <%= link_to(image_tag(hat_pic.avatar.url(:medium)), hat_pic_path(hat_pic)) %>
+
+<% if @hat_pics.any? %>
+  <% @hat_pics.each do |hat_pic| %>
+    <%= link_to(image_tag(hat_pic.avatar.url(:medium)), hat_pic_path(hat_pic)) %>
+  <% end %>
+<% else %>
+  <h1>We don't have any pictures yet!</h1>
 <% end %>
 </div>

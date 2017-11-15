@@ -2,7 +2,11 @@ class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :edit, :delete]
   before_action :authorize_user
 
-  def delete
+  def destroy
+    @rating = Rating.find(params[:id])
+    @hat_pic = @rating.hat_pic
+    @rating.destroy
+    redirect_to hat_pic_path(@hat_pic)
   end
 
   def create

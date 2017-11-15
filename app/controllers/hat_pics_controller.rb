@@ -20,6 +20,7 @@ class HatPicsController < ApplicationController
   end
 
   def new
+    @user = User.find(session[:id])
     @hat_pic = HatPic.new
   end
 

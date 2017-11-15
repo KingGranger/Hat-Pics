@@ -4,7 +4,7 @@
       <h1> 💂‍ Upload a Hat Pic! 🎩 </h1> <br>
         <%= form_for @hat_pic do |f| %>
         <%= f.file_field :avatar %>  <br> <br>
-        Select Hat Profile <%= f.collection_select :hat_id, Hat.all, :id, :color %><br><br>
+        Select Hat Profile <%= f.collection_select :hat_id, @user.hats, :id, :name %><br><br>
           <%= f.submit "Create Hat Pic" %>
         <br>
           <% end %>

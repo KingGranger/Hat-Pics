@@ -13,8 +13,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @hat_pic = @comment.hat_pic
     @comment.destroy
-    redirect_to hat_pics_path
+    redirect_to hat_pic_path(@hat_pic)
   end
 
   private

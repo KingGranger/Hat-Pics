@@ -47,7 +47,7 @@ class HatsController < ApplicationController
     @user = @hat.user
     @hat.destroy
     flash[:notice] = "That mohfuckas gon'"
-    redirect_to hats_path
+    redirect_to user_path(@user)
   end
 
   private

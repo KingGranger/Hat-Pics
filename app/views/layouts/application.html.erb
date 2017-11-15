@@ -30,11 +30,15 @@
         </li>
         <% if !!session[:id] %>
           <li class="nav-item">
-            <a class="nav-link" href="/hat_pics/new">Add New Pic </a>
+            <a class="nav-link" href="/hat_pics/new">Upload Pic </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/hats/new">Add New Hat</a>
+            <a class="nav-link" href="/hats/new">New Hat</a>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Your Hats", user_path(session[:id]), class: "nav-link"%>
           </li>
 
           <li class="nav-item">
@@ -50,21 +54,6 @@
             <a class="nav-link" href=<%= login_path %>>Login</a>
           </li>
         <% end %>
-
-
-        <% unless session[:id].nil? %>
-        <li class="nav-item">
-          <%= link_to "User Profile", user_path(session[:id]), class: "nav-link"%>
-        </li>
-        <% end %>
-
-        <li class="nav-item">
-          <% if logged_in? %>
-            <%= link_to "Logout", logout_path,  method: :post, class: "nav-link"  %>
-          <% else %>
-            <a class="nav-link" href=<%= login_path %>>Login</a>
-          <% end %>
-        </li>
 
       </ul>
       <%= form_tag(hats_path, :method => "get", id: "search-form") do %>

@@ -3,9 +3,12 @@
 <h3> Name: </h3> <%= @hat.name %><br></br>
 <h4> About This Hat: </h4> <%= @hat.description %><br></br>
 
-<h3> Pictures: </h3> <% @hat.hat_pics.each do |p| %>
-  <%= link_to(image_tag(p.avatar.url(:thumb)), hat_pic_path(p)) %>
-
+<% if @hat.hat_pics.any? %>
+  <h3> Pictures: </h3> <% @hat.hat_pics.each do |p| %>
+    <%= link_to(image_tag(p.avatar.url(:thumb)), hat_pic_path(p)) %>
+  <% end %>
+<% else %>
+  <h3>You don't have any pictures yet! <%= link_to "Add one!", new_hat_pic_path %></h3>
 <% end %>
 <br>
 <br>

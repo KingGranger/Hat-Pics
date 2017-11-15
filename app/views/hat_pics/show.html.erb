@@ -3,11 +3,14 @@
 <div class = "container">
 <div class="jumbotron">
 <%= image_tag @hat_pic.avatar.url(:medium) %>
-<br></br>
+<h3><%= link_to @hat_pic.hat.name, hat_path(@hat_pic.hat) %>  -  <%= link_to @hat_pic.hat.user.username, user_path(@hat_pic.hat.user) %></h3>
 <ul>
 <% @hat_pic.comments.each do |com| %>
-  <li><%= com.content %><br>
-    -<%= link_to com.user.username, user_path(com.user) %>
+  <li><%= com.content %> 
+  <% if logged_in? && com.user_id == session[:id] %>
+     -  <%= link_to "Delete", com, method: :delete %><br>
+  <% end %>
+    - <%= link_to com.user.username, user_path(com.user) %>
   </li>
 <% end %>
 </ul>
@@ -17,7 +20,7 @@
 <% end %>
 <% if logged_in? %>
   <%= form_for @comment do |f| %>
-    <%= f.label :content %>
+    <%= f.label "Comment" %>
     <br>
     <%= f.text_area :content %>
     <br>
@@ -28,7 +31,11 @@
 
   <% if @hat_pic.ratings.any? {|rating| rating.user_id == session[:id]} %>
     <br><br>
-    <h3>Average Rating:<%= @hat_pic.average_rating %></h3><br><br>
+    <% user_rating = Rating.find_by(user_id: session[:id], hat_pic_id: @hat_pic.id) %>
+    <h3>Average Rating:<%= @hat_pic.average_rating %></h3>
+    <p><%= link_to "Change Rating", user_rating, method: :delete %>
+    <br>
+    <br>
   <% else %>
     <%= form_for @hat_pic.ratings.build do |f| %>
       <br>
@@ -40,12 +47,14 @@
       <%= f.submit 3, name: 'score' %>
       <%= f.submit 4, name: 'score' %>
       <%= f.submit 5, name: 'score' %>
+      <br>
+      <br>
     <% end %>
   <% end %>
 
   <%= link_to "Delete", @hat_pic, method: :delete %>
 <% else %>
-    <h3>Average Rating:<%= @hat_pic.average_rating %></h3><br><br>
+    <h3>Average Rating:  <%= @hat_pic.average_rating %></h3><br><br>
 <% end %>
 </div>
 </div>
