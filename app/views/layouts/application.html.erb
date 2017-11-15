@@ -24,16 +24,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+
         <li class="nav-item active">
           <a class="nav-link" href="/hat_pics">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <% if logged_in? %>
-            <div class="nav-link"><%= link_to "Logout", logout_path, method: :post %></div>
-          <% else %>
-            <a class="nav-link" href=<%= login_path %>>Login</a>
-          <% end %>
-        </li>
+
+
 
         <li class="nav-item">
           <a class="nav-link" href="/hat_pics/new">Add New Pic </a>
@@ -47,11 +43,20 @@
           <a class="nav-link" href="/users/new">Sign Up </a>
         </li>
 
+
         <% unless session[:id].nil? %>
         <li class="nav-item">
-          <div class="nav-link" class="text-primary"><%= link_to "User Profile", user_path(session[:id]) %> </a>
+          <%= link_to "User Profile", user_path(session[:id]), class: "nav-link"%>
         </li>
         <% end %>
+
+        <li class="nav-item">
+          <% if logged_in? %>
+            <%= link_to "Logout", logout_path,  method: :post, class: "nav-link"  %></div>
+          <% else %>
+            <a class="nav-link" href=<%= login_path %>>Login</a>
+          <% end %>
+        </li>
 
       </ul>
       <%= form_tag(hats_path, :method => "get", id: "search-form") do %>
@@ -86,7 +91,7 @@
             </li>
 
           </ul>
-
+            ©2017 HatorNot
         </div>
       </nav>
     </div>

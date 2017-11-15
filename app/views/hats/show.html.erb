@@ -11,6 +11,7 @@
 <% end %>
 <br>
 <br>
+
 <% if logged_in? && @hat.user_id == session[:id] %>
   <%= link_to("Edit", edit_hat_path(@hat)) %><br><br>
 
