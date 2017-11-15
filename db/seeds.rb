@@ -18,6 +18,7 @@ diego = User.create(username: 'Diego', email: 'diego@gmail.com', password: '123'
 genevieve = User.create(username: 'Genevieve', email: 'genevieve@gmail.com', password: '123')
 liam = User.create(username: 'Liam', email: 'liam@gmail.com', password: '123')
 
+
 hat_test = Hat.create(user: lina, name: "super dope hat", description: "This hat is doper than the dopest dope you ever seen")
 red_hat = Hat.create(user: lina, name: "regular hat", description: "Kinda boring")
 dick_bag = Hat.create(user: dick, name: "Bag Hat", description: "Hat is so great that it covers my face")

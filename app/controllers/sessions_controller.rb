@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @user = User.new
   end
 
   def create
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
       session[:id] = @user.id
       if url
         redirect_to url
-      else 
+      else
         redirect_to hat_pics_path
       end
     else
