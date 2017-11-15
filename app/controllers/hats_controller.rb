@@ -53,7 +53,7 @@ class HatsController < ApplicationController
   private
 
   def hat_params
-    params.require(:hat).permit(:brand, :category, :color, :user_id, :name)
+    params.require(:hat).permit(:description, :user_id, :name)
   end
 
 end
