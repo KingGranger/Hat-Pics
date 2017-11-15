@@ -1,10 +1,40 @@
-<div class="jumbotron">
+<style>
+ .centered-text {
+     text-align:center;
+}
 
+.jumbotron {
+    background-color:transparent !important;
+}
+ </style>
+
+<body>
+<div class="mx-auto">
+<div class="container">
+  <div class = "jumbotron">
+    <div class="span12 centered-text">
+<% if logged_in? %>
+<h1> Your Hat Feed </h1>
+<% else %>
+ <h1> Hat Feed </h1>
+ <% end %>
 <% if @hat_pics.any? %>
   <% @hat_pics.each do |hat_pic| %>
-    <%= link_to(image_tag(hat_pic.avatar.url(:medium)), hat_pic_path(hat_pic)) %>
+    <br><%= link_to(image_tag(hat_pic.avatar.url, class: "col-lg-8 img-thumbnail"), hat_pic_path(hat_pic)) %> <br>
+    <p class="text-info"> Comments:
+    <% hat_pic.comments.each do |comment| %>
+ <%= comment.content %>,
+    <% end %>
+  Average Rating: <%= hat_pic.average_rating %> </p>
+
   <% end %>
 <% else %>
   <h1>We don't have any pictures yet!</h1>
 <% end %>
 </div>
+</div>
+</div>
+</div>
+<br>
+<br>
+</body>
