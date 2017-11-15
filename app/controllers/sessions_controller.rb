@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
     else url=nil
     end
     @user = User.find_by(email: params[:user][:email])
-    byebug
     if @user && @user.authenticate(params[:user][:password])
       session[:id] = @user.id
       if url

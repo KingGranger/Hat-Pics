@@ -42,7 +42,7 @@
       <%= f.label "Rate this pic!" %>
       <%= f.hidden_field :user_id, value: session[:id] %>
       <%= f.hidden_field :hat_pic_id, value: @hat_pic.id %>
-      <%= f.button 1, name: 'score' %>
+      <%= f.submit 1, name: 'score' %>
       <%= f.submit 2, name: 'score' %>
       <%= f.submit 3, name: 'score' %>
       <%= f.submit 4, name: 'score' %>
