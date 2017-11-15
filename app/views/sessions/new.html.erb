@@ -3,6 +3,7 @@ body {
   padding-top: 0px;
   padding-bottom: 40px;
   background-color: #eee;
+  background: url('http://animalsbirds.com/wp-content/uploads/2016/07/Bird-Chicken-Hat-HD-Wallpapers-free-download.jpg');
 }
 
 .form-signin {
@@ -41,20 +42,19 @@ body {
 
 <body>
   <div class = "container">
-    <h2> Log in!</h2>
 
-   <%= form_tag "/login", { class: 'form-signin', role: 'form'} do %>
+    <%=form_tag "/login", {:class => "form-signin"} do |f| %>
+        <h2 class="form-signin-heading">Log In!</h2>
+    <label for="user_email" class="sr-only">Email address</label>
+    <input type="email" id="user_email" name = "user[email]" class="form-control" placeholder="Email address" required autofocus>
 
-   <%= label_tag "user[email]", "email"%>
-    <%= text_field_tag "user[email]"%>
-
-
-   <%= label_tag "user[password]", "password"%>
-    <%= password_field_tag "user[password]" %> <br>
+    <label for="user_password" class="sr-only">Password</label>
+    <input type="password" id="user_password" name = "user[password]" class="form-control" placeholder="Password" required>
 
 
- <%= button_tag "login" %>
+    <button class="btn btn-lg btn-primary btn-block" name="commit" type="submit">Sign up</button>
+  </form>
   <% end %>
 
- </div>
+  </div>
 </body>
