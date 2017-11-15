@@ -41,21 +41,20 @@ body {
 
 <body>
   <div class = "container">
-    <h2 class="form-signin-heading">Sign up!</h2>
-    <%= form_tag "/login" do %>
+    <h2> Log in!</h2>
 
-  <div class="form-group">
-    <%= label_tag "user[email]", "email"%>
-    <%= text_field_tag "user[email]", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= label_tag "user[password]", "password"%>
-    <%= password_field_tag "user[password]", class: "form-control" %>
-  </div>
+   <%= form_tag "/login", { class: 'form-signin', role: 'form'} do %>
+
+   <%= label_tag "user[email]", "email"%>
+    <%= text_field_tag "user[email]"%>
 
 
-  <%= button_tag "login" %>
+   <%= label_tag "user[password]", "password"%>
+    <%= password_field_tag "user[password]" %> <br>
+
+
+ <%= button_tag "login" %>
   <% end %>
-  </form>
-  </div>
+
+ </div>
 </body>

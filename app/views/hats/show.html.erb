@@ -2,6 +2,9 @@
   <div class = "jumbotron">
 <h3> Name: </h3> <%= @hat.name %><br></br>
 <h4> About This Hat: </h4> <%= @hat.description %><br></br>
+<h4> Owned By: <%= link_to @hat.user.username, user_path(@hat.user) %>
+<br>
+<br>
 
 <% if @hat.hat_pics.any? %>
   <h3> Pictures: </h3> <% @hat.hat_pics.each do |p| %>
