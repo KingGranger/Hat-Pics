@@ -45,17 +45,15 @@ body {
 
 
 
-
-
-         <%=form_for @user do |f| %>
+        <%=form_for @user, :html => {:class => "form-signin"} do |f| %>
           <%= f.hidden_field :user_id, value: session[:id] %>
         <h2 class="form-signin-heading">Sign up!</h2>
 
-       <label for="user_email" class="sr-only">Email address</label>
-        <input type="email" id="user_email" name = "user[username]" class="form-control" placeholder="Email address" required autofocus>
+        <label for="user_email" class="sr-only">Email address</label>
+        <input type="email" id="user_email" name = "user[email]" class="form-control" placeholder="Email address" required autofocus>
 
-       <label for="user_username" class="sr-only">Username</label>
-        <input type="text" id="user_email" name = "user[email]" class="form-control" placeholder="Username" required>
+        <label for="user_username" class="sr-only">Username</label>
+        <input type="text" id="user_email" name = "user[username]" class="form-control" placeholder="Username" required>
 
        <label for="user_password" class="sr-only">Password</label>
         <input type="password" id="user_password" name = "user[password]" class="form-control" placeholder="Password" required>
