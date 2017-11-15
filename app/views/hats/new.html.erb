@@ -1,14 +1,41 @@
+<style>
+.centered-text {
+    text-align:center
+}
 
-<div class="container">
-    <h1> Create a Hat! </h1>
+
+.containerNew {
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-left: 70px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+</style>
+
+<br>
+<div class="mx-auto" style="width: 600px;">
+  <div class="span12 centered-text">
+    <br><h1> Create a Hat! </h1><br>
+  </div>
+<div class="containerNew">
+
+
 
   <form>
     <%= form_for @hat do |f| %>
+    <div class="form-group row">
+
+      <label for="name" class="col-lg-3">Name</label> <br>
+        <div class="col-lg-11">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+    </div>
 
     <div class="form-group row">
-      <label for="name" class="col-lg-1 col-form-label">Name</label>
-      <div class="col-lg-5">
-        <%= f.text_field :name, class: "form-control" %> <br>
+      <label for="description" class="col-lg-3">Description</label><br>
+      <div class="col-lg-11">
+        <%= f.text_area :description, class: "form-control" %> <br>
       </div>
     </div>
 
@@ -16,9 +43,11 @@
 
   <%= f.hidden_field :user_id, value: session[:id] %>
 
-  <%= f.submit %>
+  <%= f.submit %> <br><br>
 
 <% end %>
+      </div>
     </div>
   </div>
+</div>
 </div>

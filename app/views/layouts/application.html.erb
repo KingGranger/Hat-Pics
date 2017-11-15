@@ -58,13 +58,6 @@
         </li>
         <% end %>
 
-        <li class="nav-item">
-          <% if logged_in? %>
-            <%= link_to "Logout", logout_path,  method: :post, class: "nav-link"  %>
-          <% else %>
-            <a class="nav-link" href=<%= login_path %>>Login</a>
-          <% end %>
-        </li>
 
       </ul>
       <%= form_tag(hats_path, :method => "get", id: "search-form") do %>
