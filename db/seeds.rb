@@ -51,15 +51,15 @@ liam_hat_pic1 = HatPic.create(hat: liam_hat_on_tv, avatar: liam_hat_on_tv_pic)
 
 
 
-Rating.find_or_create_by(user: lina, hat_pic: lina_hat_pic1, score: 9)
-Rating.find_or_create_by(user: lina, hat_pic: lina_hat_pic2, score: 10)
-Rating.find_or_create_by(user: dick, hat_pic: dick_hat_pic1, score: 6)
-Rating.find_or_create_by(user: dick, hat_pic: dick_hat_pic2, score: 9)
-Rating.find_or_create_by(user: dick, hat_pic: dick_hat_pic3, score: 10)
-Rating.find_or_create_by(user: diego, hat_pic: diego_hat_pic1, score: 7)
-Rating.find_or_create_by(user: diego, hat_pic: diego_hat_pic2, score: 9)
-Rating.find_or_create_by(user: genevieve, hat_pic: genevieve_hat_pic1, score: 8)
-Rating.find_or_create_by(user: liam, hat_pic: liam_hat_pic1, score: 10)
+Rating.find_or_create_by(user: lina, hat_pic: lina_hat_pic1, score: 4)
+Rating.find_or_create_by(user: lina, hat_pic: lina_hat_pic2, score: 4)
+Rating.find_or_create_by(user: dick, hat_pic: dick_hat_pic1, score: 5)
+Rating.find_or_create_by(user: dick, hat_pic: dick_hat_pic2, score: 5)
+Rating.find_or_create_by(user: dick, hat_pic: dick_hat_pic3, score: 4)
+Rating.find_or_create_by(user: diego, hat_pic: diego_hat_pic1, score: 5)
+Rating.find_or_create_by(user: diego, hat_pic: diego_hat_pic2, score: 3)
+Rating.find_or_create_by(user: genevieve, hat_pic: genevieve_hat_pic1, score: 3)
+Rating.find_or_create_by(user: liam, hat_pic: liam_hat_pic1, score: 4)
 
 
 

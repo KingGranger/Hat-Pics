@@ -1,24 +1,29 @@
 
 
-<div class = "container">
-<h1>Hello, <%= @user.username %>!</h1><br><br>
+  <div class = "container">
+    <br>
+    <div class = "jumbotron">
+    <h1 class = "display-4">Hello, <%= @user.username %>!</h1><br><br>
+    <% if @user.hats.any? %>
+      <h2>Here are your hats!
 
+        <% @user.hats.each do |hat| %>
+          <% if hat.hat_pics.any? %>
+            <%= link_to(image_tag(hat.hat_pics.all.sample.avatar.url(:medium)), hat_path(hat)) %>
+          <% else %>
+            <h3><%= link_to hat.name, hat_path(hat) %></h3>
+          <% end %>
+        <% end %>
 
-<% if @user.hats.any? %>
-  <br>
-    <% @user.hats.each do |hat| %>
-      <% if hat.hat_pics.any? %>
-        <%= link_to(image_tag(hat.hat_pics.all.sample.avatar.url, hat_path(hat)) %>
+    <% else %>
+        <% if @user.id == session[:id] %>
+        <h3>You don’t have any hats!</h3>
       <% else %>
-        <h3><%= link_to hat.name, hat_path(hat) %></h3>
+        <h3>This person has no hats!</h3>
       <% end %>
     <% end %>
-<% else %>
-    <% if @user.id == session[:id] %>
-    <h3>You don't have any hats!</h3>
-  <% else %>
-    <h3>This person has no hats!</h3>
-  <% end %>
-<% end %>
-</div>
-</div>
+    </h2>
+      </div>
+    </div>
+  </div>
+</body>

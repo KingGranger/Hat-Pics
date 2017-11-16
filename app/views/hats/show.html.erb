@@ -1,7 +1,8 @@
 <div class = "container">
+  <br>
   <div class = "jumbotron">
-<h3> Name: </h3> <%= @hat.name %><br></br>
-<h4> About This Hat: </h4> <%= @hat.description %><br></br>
+<h1 class="display-4"> Name: <%= @hat.name %></h1><br>
+<h1> About This Hat: <%= @hat.description %> </h1><br>
 
 <% if @hat.hat_pics.any? %>
   <h3> Pictures: </h3> <% @hat.hat_pics.each do |p| %>
@@ -14,9 +15,14 @@
 <br>
 
 <% if logged_in? && @hat.user_id == session[:id] %>
-  <%= link_to("Edit", edit_hat_path(@hat)) %><br><br>
-
-<%= link_to "Delete", @hat, method: :delete %>
+  <div class = "row">
+    <div class = "col-1">
+    <%= link_to("Edit", edit_hat_path(@hat), :class => "btn btn-danger") %><br>
+    </div>
+    <div class = "col-1">
+    <%= link_to "Delete", @hat, method: :delete, :class => "btn btn-danger" %>
+    </div>
+  </div>
 <% end %>
   </div>
 </div>
