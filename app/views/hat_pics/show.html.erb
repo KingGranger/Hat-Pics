@@ -1,57 +1,97 @@
+<style>
+.jumbotron {
+    background-color:transparent !important;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+.well {
+  display: flex;
+  align-items: center;
+}
+
+.centered-text {
+    text-align:center
+}
+
+p {
+    text-align: left !important;
+}
+</style>
+
+<div class = "container centered-text">
+  <div class="jumbotron">
+    <h1 class = "display-4">Hat Name: <%= link_to @hat_pic.hat.name, hat_path(@hat_pic.hat) %> <br></h1>
+    <h4> By: <%= link_to @hat_pic.hat.user.username, user_path(@hat_pic.hat.user) %></h3> </h4>
+
+      <%= image_tag @hat_pic.avatar.url, class: "col-lg-8" %> <br>
 
 
-<div class = "container">
-<div class="jumbotron">
-<%= image_tag @hat_pic.avatar.url(:medium) %>
-<h3><%= link_to @hat_pic.hat.name, hat_path(@hat_pic.hat) %>  -  <%= link_to @hat_pic.hat.user.username, user_path(@hat_pic.hat.user) %></h3>
-<ul>
-<% @hat_pic.comments.each do |com| %>
-  <li><%= com.content %> 
-  <% if logged_in? && com.user_id == session[:id] %>
-     -  <%= link_to "Delete", com, method: :delete %><br>
-  <% end %>
-    - <%= link_to com.user.username, user_path(com.user) %>
-  </li>
-<% end %>
-</ul>
+      <!-- comments  -->
+        <% @hat_pic.comments.each do |com| %>
+          <div class = "col-lg-4" style = "display:inline-block">
+            <p> <%= link_to com.user.username, user_path(com.user) %>: <%= com.content %> </p>
+        <% if logged_in? && com.user_id == session[:id] %>
+             -  <%= link_to "Delete", com, method: :delete %>
+        <% end %>
 
-<% @comment.errors.full_messages.each do |msg| %>
-  <h4><%= msg %></h4>
-<% end %>
-<% if logged_in? %>
-  <%= form_for @comment do |f| %>
-    <%= f.label "Comment" %>
-    <br>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.hidden_field :user_id, value: session[:id] %>
-    <%= f.hidden_field :hat_pic_id, value: @hat_pic.id %>
-    <%= f.submit %>
-  <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-  <% if @hat_pic.ratings.any? {|rating| rating.user_id == session[:id]} %>
-    <br><br>
-    <% user_rating = Rating.find_by(user_id: session[:id], hat_pic_id: @hat_pic.id) %>
-    <h3>Average Rating:<%= @hat_pic.average_rating %></h3>
-    <p><%= link_to "Change Rating", user_rating, method: :delete %>
-    <br>
-    <br>
-  <% else %>
+    <!-- #error messages -->
+    <% @comment.errors.full_messages.each do |msg| %>
+      <h4><%= msg %></h4>
+    <% end %>
+
+
+    <p> <% if logged_in? %>
+      <%= form_for @comment do |f| %>
+        <%= f.label "Add a Comment" %>
+        <br>
+        <%= f.text_area :content %>
+        <br>
+        <%= f.hidden_field :user_id, value: session[:id] %>
+        <%= f.hidden_field :hat_pic_id, value: @hat_pic.id %>
+        <%= f.submit %>
+      <% end %> </p>
+
+   <% if @hat_pic.ratings.any? {|rating| rating.user_id == session[:id]} %>
+      <br><br>
+      <% user_rating = Rating.find_by(user_id: session[:id], hat_pic_id: @hat_pic.id) %>
+      <h3>Your Rating:<%= @hat_pic.average_rating %></h3>
+      <p><%= link_to "Change Rating", user_rating, method: :delete %>
+      <br>
+      <br>
+    <% else %>
     <%= form_for @hat_pic.ratings.build do |f| %>
-      <br>
-      <%= f.label "Rate this pic!" %>
-      <%= f.hidden_field :user_id, value: session[:id] %>
-      <%= f.hidden_field :hat_pic_id, value: @hat_pic.id %>
-      <%= f.submit 1, name: 'score' %>
-      <%= f.submit 2, name: 'score' %>
-      <%= f.submit 3, name: 'score' %>
-      <%= f.submit 4, name: 'score' %>
-      <%= f.submit 5, name: 'score' %>
-      <br>
-      <br>
+        <br>
+        <%= f.label "Rate this pic!" %>
+        <%= f.hidden_field :user_id, value: session[:id] %>
+        <%= f.hidden_field :hat_pic_id, value: @hat_pic.id %>
+        <%= f.submit 1, name: "score" %>
+        <%= f.submit 2, name: "score" %>
+        <%= f.submit 3, name: "score" %>
+        <%= f.submit 4, name: "score" %>
+        <%= f.submit 5, name: "score" %>
+        <br>
+        <br>
     <% end %>
   <% end %>
-  <%= link_to "Delete", @hat_pic, method: :delete %>
+  <% if @hat_pic.hat.user_id == session[:id] %>
+   <%= link_to "Delete", @hat_pic, method: :delete, class: "btn btn-danger" %>
+  <% end %>
 <% else %>
     <h3>Average Rating:  <%= @hat_pic.average_rating %></h3><br><br>
 <% end %>

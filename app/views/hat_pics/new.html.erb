@@ -1,12 +1,34 @@
-<div class = "container">
-  <br><br>
-    <div class = "jumbotron">
-      <h1> 💂‍ Upload a Hat Pic! 🎩 </h1> <br>
-        <%= form_for @hat_pic do |f| %>
-        <%= f.file_field :avatar %>  <br> <br>
-        Select Hat Profile <%= f.collection_select :hat_id, @user.hats, :id, :name %><br><br>
-          <%= f.submit "Create Hat Pic" %>
-        <br>
-          <% end %>
-      </div>
+<style>
+.jumbotron {
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.container {
+    height: 100%;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+  }
+
+.centered-text {
+    text-align:center
+}
+
+p {
+    text-align: left !important;
+}
+</style>
+
+
+<div class = "container centered-text">
+  <div class = "jumbotron border border-secondary">
+    <h1> 💂‍ Upload a Hat Pic! 🎩 </h1> <br>
+      <%= form_for @hat_pic do |f| %>
+          <%= f.file_field :avatar, {:class => "btn btn-primary"}  %><br><br>
+          <p>Select Hat Profile  <%= f.collection_select :hat_id, @user.hats, :id, :name, {:class => "selectpicker"} %></p><br>
+          <%= f.submit "Create Hat Pic", {:class => "btn btn-secondary btn-lg btn-block"}   %>
+        <% end %>
+
+  </div>
 </div>

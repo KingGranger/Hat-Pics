@@ -2,7 +2,10 @@
   <div class = "jumbotron">
 <% if @hats.any? %>
   <% @hats.each do |hat| %>
+      <div class = "col-3">
     <%= link_to hat.name, hat_path(hat) %> <br>
+  </div>
+  </div>
   <% end %>
 <% else %>
   <h1>There aren't any hats yet!</h1>
