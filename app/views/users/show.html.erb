@@ -3,10 +3,14 @@
   <div class = "container">
     <br>
     <div class = "jumbotron">
-    <h1 class = "display-4">Hello, <%= @user.username %>!</h1><br><br>
     <% if @user.hats.any? %>
-      <h2>Here are your hats!
-
+      <%  if @user.id == session[:id] %>
+        <h1 class = "display-4">Hello, <%= @user.username %>!</h1><br><br>
+        <h2>Here are your hats!</h2>
+      <% else %>
+        <h1 class = "display-4">Welcome to <%= @user.username %>'s page!</h1><br><br>
+        <h2>Check out <%= @user.username %>'s hats!
+      <% end %>
         <% @user.hats.each do |hat| %>
           <% if hat.hat_pics.any? %>
             <%= link_to(image_tag(hat.hat_pics.all.sample.avatar.url(:medium)), hat_path(hat)) %>

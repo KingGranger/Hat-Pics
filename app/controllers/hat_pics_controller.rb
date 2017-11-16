@@ -6,6 +6,10 @@ class HatPicsController < ApplicationController
     @hat_pics = HatPic.all
   end
 
+  def top
+    @hat_pics = HatPic.all
+  end
+
   def create
     if logged_in?
       @hat_pic = HatPic.new(hat_pic_params)

@@ -14,4 +14,8 @@ class HatPic < ApplicationRecord
  def average_rating
     scores.reduce(:+) / scores.size unless scores.size == 0
   end
+
+ def self.top_hats
+   HatPic.all.sort {|a,b| b.average_rating <=> a.average_rating}
+ end
 end
