@@ -11,7 +11,6 @@ class HatsController < ApplicationController
   end
 
   def show
-    authorize_user
     @hat = Hat.find(params[:id])
   end
 
