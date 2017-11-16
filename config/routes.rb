@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get "/", to: "hat_pics#index", as: "root"
 
   resources :hats
   resources :comments, only: [:create, :destroy]
