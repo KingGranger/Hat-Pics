@@ -40,21 +40,29 @@ body {
 }
 </style>
 
+
 <body>
   <div class = "container">
-
+    <% if flash.now[:notice] %>
+      <div class="alert alert-danger">
+        <strong></strong><a href="#" class="alert-link"><%= flash.now[:notice]%></a>
+      </div>
+    <% end %>
     <%=form_tag "/login", {:class => "form-signin"} do |f| %>
+
+
         <h2 class="form-signin-heading">Log In!</h2>
-    <label for="user_email" class="sr-only">Email address</label>
-    <input type="email" id="user_email" name = "user[email]" class="form-control" placeholder="Email address" required autofocus>
+          <label for="user_email" class="sr-only">Email address</label>
+          <input type="email" id="user_email" name = "user[email]" class="form-control" placeholder="Email address" required autofocus>
 
-    <label for="user_password" class="sr-only">Password</label>
-    <input type="password" id="user_password" name = "user[password]" class="form-control" placeholder="Password" required>
+          <label for="user_password" class="sr-only">Password</label>
+          <input type="password" id="user_password" name = "user[password]" class="form-control" placeholder="Password" required>
 
 
-    <button class="btn btn-lg btn-primary btn-block" name="commit" type="submit">Log In</button>
-  </form>
-  <% end %>
+          <button class="btn btn-lg btn-success btn-block" name="commit" type="submit">Log in</button>
+      </form>
+    <% end %>
 
   </div>
+
 </body>

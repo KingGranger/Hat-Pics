@@ -1,5 +1,5 @@
 class HatPicsController < ApplicationController
-  before_action :set_picture, only: [:show, :delete]
+  before_action :set_picture, only: [:show, :destroy]
   before_action :authorize_user, only: [:new, :destroy, :create]
   def index
     #authorize_user
@@ -29,7 +29,7 @@ class HatPicsController < ApplicationController
   end
 
   def destroy
-    @hat_pic = HatPic.find(params[:id])
+
     @hat_pic.destroy
     redirect_to hat_pics_path
   end

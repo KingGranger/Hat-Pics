@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       session[:id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:notice] = "Something was wrong, try again"
+      flash.now[:notice] = "Something was wrong, try again"
       render :new
     end
   end

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HatPics</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+  </head>
+  <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">🎩</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="/hat_pics">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <% if !!session[:id] %>
+              <li class="nav-item">
+                <a class="nav-link" href="/hat_pics/new">Upload Pic </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/hats/new">New Hat</a>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Your Hats", user_path(session[:id]), class: "nav-link"%>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to "Logout", logout_path,  method: :post, class: "nav-link"  %>
+              </li>
+
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/new">Sign Up </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href=<%= login_path %>>Login</a>
+              </li>
+            <% end %>
+
+          </ul>
+          <%= form_tag(hats_path, :method => "get", id: "search-form") do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Hats" %>
+              <%= submit_tag "Search", :name => nil %>
+          <% end %>
+        </div>
+      </nav>
+<style media="screen">
+  body {
+    background-color
+  }
+
+</style>
+
+
+
+  </body>
+</html>
