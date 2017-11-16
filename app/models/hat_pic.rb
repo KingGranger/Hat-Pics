@@ -10,13 +10,6 @@ class HatPic < ApplicationRecord
   def scores
     self.ratings.map {|rating| rating.score}
   end
-<<<<<<< HEAD
-=======
-
-  def average_rating
-    scores.reduce(:+) / scores.size
-  end
->>>>>>> 9cf2b1d3368b6ab65b1c0b7581f60333d093f191
 
  def average_rating
     scores.reduce(:+) / scores.size unless scores.size == 0
