@@ -46,7 +46,13 @@ p {
  <%= f.hidden_field :user_id, value: session[:id] %>
 
 
+
+  <%= f.hidden_field :user_id, value: session[:id] %>
+
   <%= f.submit "Add Hat", {:class => "btn btn-secondary btn-lg btn-block"}  %>
+
+ <%= f.submit %>
+
 
 
 <% end %>

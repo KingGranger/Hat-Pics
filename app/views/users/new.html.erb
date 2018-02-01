@@ -44,6 +44,19 @@ body {
 <div class="container">
 
         <%=form_for @user, :html => {:class => "form-signin"} do |f| %>
+          <% if @user && @user.errors.any? %>
+            <div id="error_explanation">
+              <!-- <h2><%= pluralize(@user.errors.count, "error") %> You can't login in because:</h2> -->
+
+                <% @user.errors.full_messages.each do |msg| %>
+                  <div class="alert alert-danger">
+                    <strong>Error! </strong><a href="#" class="alert-link"><%= msg %></a>.
+                  </div>
+                <% end %>
+
+
+            </div>
+          <% end %>
           <%= f.hidden_field :user_id, value: session[:id] %>
         <h2 class="form-signin-heading">Sign up!</h2>
 
