@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get "/", to: "hat_pics#index", as: "root"
+  get "/hat_pics/top", to:"hat_pics#top", as: "top_hats"
 
   get '/about' => 'static#about'
   resources :hats

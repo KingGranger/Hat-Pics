@@ -8,14 +8,25 @@ class HatPic < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def scores
-    self.ratings.map {|rating| rating.score}
+    self.ratings.map {|rating| rating.score if rating.score != nil}
   end
+
 
   def average_rating
     scores.reduce(:+) / scores.size
   end
 
+
  def average_rating
-    scores.reduce(:+) / scores.size unless scores.size == 0
+    if scores.size == 0
+      return 0
+    else
+      scores.reduce(:+) / scores.size
+    end
   end
+
+ def self.top_hats
+   HatPic.all.sort {|a,b| b.average_rating <=> a.average_rating}
+ end
+
 end
